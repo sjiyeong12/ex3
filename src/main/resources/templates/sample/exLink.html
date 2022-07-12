@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .target {
+            background-color: red;
+        }
+    </style>
+</head>
+
+<body>
+    <h1 th:text="${title}"></h1>
+    <ul>
+        <li th:class="${dto.sno % 5 == 0} ? 'target'" th:each="dto, state : ${list}">
+            <a th:href="@{/sample/exView(sno=${dto.sno})}">[[${dto.sno}]]</a> ---
+            [[${#temporals.format(dto.regTime, 'yyyy년/MM월/dd일')}]]
+        </li>
+    </ul>
+</body>
+
+</html>
